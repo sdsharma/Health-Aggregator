@@ -14,7 +14,7 @@ var usersFilePath = path.join(__dirname, '/views/macrosdata.json');
  app.get("/", function(req, res) {
     // res.sendfile('index.html');
     //get info from dates
-    mfp.fetchDateRange('shivwest', getDateTime(7), getDateTime(0), 'all', function(data){
+    mfp.fetchDateRange('superdudeb', getDateTime(7), getDateTime(0), 'all', function(data){
       jsonfile.writeFile(usersFilePath, data.data, function (err) {
           if(err){
             console.error(err);

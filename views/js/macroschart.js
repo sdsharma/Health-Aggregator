@@ -6,4 +6,4 @@ function macrosCtrl($scope, $http){
     alert('Error Retrieving Macros Data');
   });
   
- }  
+ }
