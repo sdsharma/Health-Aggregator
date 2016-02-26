@@ -5,13 +5,13 @@ macrosrepetition = data[data.length-1];
 Morris.Donut({
     element: 'morris-donut-chart',
     data: [{
-        label: "Carbs",
+        label: "Carbs(g)",
         value: Number(macrosrepetition.carbs)
     }, {
-        label: "Fat",
+        label: "Fat(g)",
         value: Number(macrosrepetition.fat)
     }, {
-        label: "Protein",
+        label: "Protein(g)",
         value: Number(macrosrepetition.protein)
     }],
 
