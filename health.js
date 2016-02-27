@@ -107,27 +107,66 @@ function getDateTime(offset) {
 
 function getMealsToday(){
   var url = "http://www.myfitnesspal.com/reports/printable_diary/superdudeb?from=" + getDateTime(0) + "&to=" + getDateTime(0);
-  var usersMealPath = path.join(__dirname, '/views/mealsdata.json');
+  var usersMealPath0 = path.join(__dirname, '/views/mealsdata0.json');
+  var usersMealPath1 = path.join(__dirname, '/views/mealsdata1.json');
+  var usersMealPath2 = path.join(__dirname, '/views/mealsdata2.json');
+  var usersMealPath3 = path.join(__dirname, '/views/mealsdata3.json');
   request(url, function (error, response, html) {
   if (!error && response.statusCode == 200) {
     var $ = cheerio.load(html);
     var i = 0;
-    var parsedResults = [];
+    //var parsedResultsBreakfast = [];
+    //var parsedResultsLunch = [];
+    //var parsedResultsDinner = [];
+    var whichMeal = -1;
+    var parsedResultUpper = [[], [], [], [] ];
     $('td.first').each(function(i, element){
       // Get the rank by parsing the element two levels above the "a" element
       var food = $(this).text();
+
+      if( food == "Breakfast")
+      {
+          whichMeal = 0;
+      }
+      if( food == "Lunch")
+      {
+          whichMeal = 1;
+      }
+      if( food == "Dinner")
+      {
+          whichMeal = 2;
+      }
+      if( food == "Snacks")
+      {
+          whichMeal = 3;
+      }
 
       var metadata = {
         food: food
 
       };
       // Push meta-data into parsedResults array
-      parsedResults.push(metadata);
+      if(whichMeal != - 1 && food != "Breakfast" && food != "Lunch" && food != "Dinner" && food != "Snacks") {(parsedResultUpper[whichMeal]).push(metadata);}
 
     });
-    parsedResults.length = parsedResults.length - 5;
-    parsedResults = parsedResults.slice(1,parsedResults.length-1);
-    jsonfile.writeFile(usersMealPath, parsedResults, function (err) {
+    (parsedResultUpper[whichMeal]).length = (parsedResultUpper[whichMeal]).length - 5;
+    //parsedResults = parsedResults.slice(1,parsedResults.length-1);
+    jsonfile.writeFile(usersMealPath0, parsedResultUpper[0], function (err) {
+      if(err){
+        console.error(err);
+      }
+    });
+    jsonfile.writeFile(usersMealPath1, parsedResultUpper[1], function (err) {
+      if(err){
+        console.error(err);
+      }
+    });
+    jsonfile.writeFile(usersMealPath2, parsedResultUpper[2], function (err) {
+      if(err){
+        console.error(err);
+      }
+    });
+    jsonfile.writeFile(usersMealPath3, parsedResultUpper[3], function (err) {
       if(err){
         console.error(err);
       }
