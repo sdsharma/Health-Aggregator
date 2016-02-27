@@ -68,7 +68,7 @@ var usersFilePath = path.join(__dirname, '/views/macrosdata.json');
       var oneDay = 1000 * 60 * 60 * 24;
       var days = Math.floor(diff / oneDay);
       // console.log(jwdata[day-7]);
-      res.render('index.ejs', {caloriestoday: data.data[data.data.length - 1].calories, stepstoday: jwdata[days-8].m_steps, sleeptoday: (jwdata[days-8].s_duration/3600).toFixed(2), weighttoday: Math.ceil(jwdata[days-8].weight * 2.2), caloriesburned: jwdata[days-8].m_calories});
+      res.render('index.ejs', {caloriestoday: data.data[data.data.length - 1].calories, stepstoday: jwdata[days-8].m_steps, sleeptoday: (jwdata[days-8].s_duration/3600).toFixed(2), weighttoday: Math.ceil(jwdata[days-8].weight * 2.2), caloriesburned: jwdata[days-8].m_calories, ahr: jwdata[days-8].avg_bg, iat: (jwdata[days-8].m_inactive_time/60).toFixed(2), aat: (jwdata[days-8].m_active_time/60).toFixed(2)});
     });
  });
  
