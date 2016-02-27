@@ -50,12 +50,12 @@ var sslOptions = {
 
 app.get('/login/jawbone', 
   passport.authorize('jawbone', {
-    scope: ['basic_read','sleep_read'],
+    scope: ['move_read','calories'],
     failureRedirect: './'
   })
 );
 app.get('/login/jawbone/callback', passport.authorize('jawbone', {
-        scope: ['basic_read','sleep_read'],
+        scope: ['move_read','calories'],
         failureRedirect: '/'
     }), function(req, res) {
         res.redirect('/userdata');
@@ -71,10 +71,10 @@ app.get('/userdata', function(req, res) {
     var up = require('jawbone-up')(options);
 
     // we need to add date or sleep call fails
-    var yyyymmdd = (new Date()).toISOString().slice(0, 10).replace(/-/g, "");
+    var yyyymmdd = (getDateTime(1)).replace(/-/g, "");
     console.log('Getting sleep for day ' + yyyymmdd);
 
-    up.sleeps.get({date:yyyymmdd}, function(err, body) {
+    up.moves.get({date:yyyymmdd}, function(err, body) {
         if (err) {
             console.log('Error receiving Jawbone UP data');
             return res.render('userdata', {
