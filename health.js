@@ -11,8 +11,6 @@ var JawboneStrategy = require('passport-oauth').OAuth2Strategy;
 var jsonfile = require('jsonfile');
 var request = require('request');
 var cheerio = require('cheerio');
-// var Converter = require("csvtojson").Converter;
-// var converter = new Converter({});
 var app = express();
 
 
@@ -56,6 +54,7 @@ app.get('/login/jawbone/callback', passport.authorize('jawbone', {
 var usersFilePath = path.join(__dirname, '/views/macrosdata.json');
  app.get("/", function(req, res) {
     //get info from dates
+    var jwdata = JSON.parse(fs.readFileSync('./views/jawbonedata.json', 'utf8'));
     mfp.fetchDateRange('superdudeb', getDateTime(7), getDateTime(0), 'all', function(data){
       getMealsToday();
       jsonfile.writeFile(usersFilePath, data.data, function (err) {
@@ -63,7 +62,13 @@ var usersFilePath = path.join(__dirname, '/views/macrosdata.json');
             console.error(err);
           }
         });
-      res.render('index.ejs', {caloriestoday: data.data[data.data.length - 1].calories});
+      var now = new Date();
+      var start = new Date(now.getFullYear(), 0, 0);
+      var diff = now - start;
+      var oneDay = 1000 * 60 * 60 * 24;
+      var days = Math.floor(diff / oneDay);
+      // console.log(jwdata[day-7]);
+      res.render('index.ejs', {caloriestoday: data.data[data.data.length - 1].calories, stepstoday: jwdata[days-8].m_steps, sleeptoday: (jwdata[days-8].s_duration/3600).toFixed(2), weighttoday: Math.ceil(jwdata[days-8].weight * 2.2)});
     });
  });
  
