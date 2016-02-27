@@ -53,54 +53,54 @@ var sslOptions = {
 app.get('/login/jawbone', 
   passport.authorize('jawbone', {
     scope: ['move_read','calories'],
-    failureRedirect: './'
+    failureRedirect: '/'
   })
 );
 app.get('/login/jawbone/callback', passport.authorize('jawbone', {
         scope: ['move_read','calories'],
         failureRedirect: '/'
     }), function(req, res) {
-        res.redirect('/userdata');
+        res.redirect('/');
     }
 );
-app.get('/userdata', function(req, res) {
+// app.get('/userdata', function(req, res) {
 
-    var options = {
-        access_token: demoSession.accessToken,
-        client_id: jawboneAuth.clientID,
-        client_secret: jawboneAuth.clientSecret
-    };
-    var up = require('jawbone-up')(options);
+//     var options = {
+//         access_token: demoSession.accessToken,
+//         client_id: jawboneAuth.clientID,
+//         client_secret: jawboneAuth.clientSecret
+//     };
+//     var up = require('jawbone-up')(options);
 
-    // we need to add date or sleep call fails
-    var yyyymmdd = (getDateTime(1)).replace(/-/g, "");
-    console.log('Getting sleep for day ' + yyyymmdd);
+//     // we need to add date or sleep call fails
+//     var yyyymmdd = (getDateTime(1)).replace(/-/g, "");
+//     console.log('Getting sleep for day ' + yyyymmdd);
 
-    up.moves.get({date:yyyymmdd}, function(err, body) {
-        if (err) {
-            console.log('Error receiving Jawbone UP data');
-            return res.render('userdata', {
-                    requestTime: 0,
-                    jawboneData: 'Error result'
-                });
-        } else {
-            try {
-                var result = JSON.parse(body);
-                console.log(result);
-                res.render('userdata', {
-                    requestTime: result.meta.time,
-                    jawboneData: JSON.stringify(result.data)
-                });
-            }
-            catch(err) {
-                res.render('userdata', {
-                    requestTime: 0,
-                    jawboneData: 'Unknown result'
-                });
-            }
-        }
-    });
-});
+//     up.moves.get({date:yyyymmdd}, function(err, body) {
+//         if (err) {
+//             console.log('Error receiving Jawbone UP data');
+//             return res.render('userdata', {
+//                     requestTime: 0,
+//                     jawboneData: 'Error result'
+//                 });
+//         } else {
+//             try {
+//                 var result = JSON.parse(body);
+//                 console.log(result);
+//                 res.render('userdata', {
+//                     requestTime: result.meta.time,
+//                     jawboneData: JSON.stringify(result.data)
+//                 });
+//             }
+//             catch(err) {
+//                 res.render('userdata', {
+//                     requestTime: 0,
+//                     jawboneData: 'Unknown result'
+//                 });
+//             }
+//         }
+//     });
+// });
 //server
 var usersFilePath = path.join(__dirname, '/views/macrosdata.json');
  app.get("/", function(req, res) {
