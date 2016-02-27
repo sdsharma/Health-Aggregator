@@ -69,9 +69,10 @@ var DemoServerAdapter = (function () {
         var echoBotUser = new ChatUserInfo();
         echoBotUser.Id = DemoAdapterConstants.ECHOBOT_USER_ID;
         echoBotUser.RoomId = DemoAdapterConstants.DEFAULT_ROOM_ID;
-        echoBotUser.Name = "Echobot";
+        echoBotUser.Name = "Healthcare Consultant";
         echoBotUser.Email = "echobot1984@gmail.com";
-        echoBotUser.ProfilePictureUrl = "http://www.gravatar.com/avatar/4ec6b20c5fed48b6b01e88161c0a3e20.jpg";
+        echoBotUser.ProfilePictureUrl = "./js/ChatJs/Images/doctor.png";
+
         echoBotUser.Status = 1 /* Online */;
 
         // adds the users in the global user list
