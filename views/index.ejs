@@ -11,6 +11,44 @@
 
     <title>Singularity</title>
 
+
+    <!-- Chat JS -->
+
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/ChatJs/js/jquery.autosize.js"></script>
+    <!-- chatjs files-->
+    <script src="js/ChatJs/js/jquery.chatjs.utils.js"></script>
+    <script src="js/ChatJs/js/jquery.chatjs.adapter.servertypes.js"></script>
+    <script src="js/ChatJs/js/jquery.chatjs.adapter.js"></script>
+    <script src="js/ChatJs/js/jquery.chatjs.adapter.demo.js"></script>
+    <script src="js/ChatJs/js/jquery.chatjs.window.js"></script>
+    <script src="js/ChatJs/js/jquery.chatjs.messageboard.js"></script>
+    <script src="js/ChatJs/js/jquery.chatjs.userlist.js"></script>
+    <script src="js/ChatJs/js/jquery.chatjs.pmwindow.js"></script>
+    <script src="js/ChatJs/js/jquery.chatjs.friendswindow.js"></script>
+    <script src="js/ChatJs/js/jquery.chatjs.controller.js"></script>
+    <link rel="stylesheet" href="js/ChatJs/css/jquery.chatjs.css" />
+
+
+    <script type="text/javascript">
+        $(function () {
+            $.chat({
+                // your user information
+                userId: 1,
+                // id of the room. The friends list is based on the room Id
+                roomId: 1,
+                // text displayed when the other user is typing
+                typingText: ' is typing...',
+                // text displayed when there's no other users in the room
+                emptyRoomText: "There's no one around here. You can still open a session in another browser and chat with yourself :)",
+                // the adapter you are using
+                chatJsContentPath: 'js/Chatjs/',
+                adapter: new DemoAdapter()
+            });
+        });
+    </script>
+
+
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -22,7 +60,6 @@
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <script src="js/jquery.js"></script>
     <script data-require="angular.js@*" data-semver="1.2.10" src="https://code.angularjs.org/1.2.10/angular.js"></script>
     <script src="js/angular.ng-modules.js"></script>
     <script src="js/macroschart.js"></script>
@@ -38,6 +75,8 @@
 </head>
 
 <body>
+
+    <script src="js/scale.fix.js"></script>
 
     <div id="wrapper">
 
