@@ -243,3 +243,64 @@ ul.alert-dropdown {
 .panel-purple > a:hover {
     color: #df8a13;
 }
+/* This is new panels */
+
+
+.panel-pink {
+    border-color: #FF66FF;
+}
+
+.panel-pink > .panel-heading {
+    border-color: #FF66FF;
+    color: #fff;
+    background-color: #FF66FF;
+}
+
+.panel-pink > a {
+    color: #FF66FF;
+}
+
+.panel-pink > a:hover {
+    color: #FF66FF;
+}
+
+
+
+
+.panel-grey {
+    border-color: #A0A0A0;
+}
+
+.panel-grey > .panel-heading {
+    border-color: #A0A0A0;
+    color: #fff;
+    background-color: #A0A0A0;
+}
+
+.panel-grey > a {
+    color: #A0A0A0;
+}
+
+.panel-grey > a:hover {
+    color: #A0A0A0;
+}
+
+
+
+.panel-bluish {
+    border-color: #6666FF;
+}
+
+.panel-bluish > .panel-heading {
+    border-color: #6666FF;
+    color: #fff;
+    background-color: #6666FF;
+}
+
+.panel-bluish > a {
+    color: #6666FF;
+}
+
+.panel-bluish > a:hover {
+    color: #6666FF;
+}
