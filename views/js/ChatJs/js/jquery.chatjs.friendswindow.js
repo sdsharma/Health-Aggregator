@@ -24,7 +24,7 @@ var ChatFriendsWindow = (function () {
     function ChatFriendsWindow(options) {
         var _this = this;
         var defaultOptions = new ChatFriendsWindowOptions();
-        defaultOptions.titleText = "Friends";
+        defaultOptions.titleText = "Groups";
         defaultOptions.isMaximized = true;
         defaultOptions.offsetRight = 10;
         defaultOptions.emptyRoomText = "No users available for chatting.";
