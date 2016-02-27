@@ -7,3 +7,13 @@ function macrosCtrl($scope, $http){
   });
   
  }
+
+var foodApp = angular.module('foodApp', []);
+function foodCtrl($scope, $http){
+  $http.get('../mealsdata.json').success(function(data) {
+    $scope.foodrepetition = data;
+  }).error(function(data, status) {
+    alert('Error Retrieving Food Data');
+  });
+  
+ }
