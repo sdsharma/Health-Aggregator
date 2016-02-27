@@ -36,7 +36,7 @@ passport.use('jawbone', new JawboneStrategy({
   tokenURL: jawboneAuth.tokenURL,
   callbackURL: jawboneAuth.callbackURL
 }, function(token, refreshToken, profile, done) {
-  var options = {
+  options = {
         access_token: token,
         client_id: jawboneAuth.clientID,
         client_secret: jawboneAuth.clientSecret
@@ -48,7 +48,7 @@ passport.use('jawbone', new JawboneStrategy({
       console.log('Error receiving Jawbone UP data');
     } else {
       var jawboneData = JSON.parse(body).data;
-
+      console.log(jawboneData);
       for (var i = 0; i < jawboneData.items.length; i++) {
         var date = jawboneData.items[i].date.toString(),
             year = date.slice(0,4),
@@ -66,16 +66,38 @@ passport.use('jawbone', new JawboneStrategy({
 
 app.get('/login/jawbone', 
   passport.authorize('jawbone', {
-    scope: ['basic_read','sleep_read'],
+    scope: ['move_read','calories'],
     failureRedirect: './'
   })
 );
 app.get('/login/jawbone/callback',
   passport.authorize('jawbone', {
-    scope: ['basic_read','sleep_read'],
+    scope: ['move_read','calories'],
     failureRedirect: '/'
   }), function(req, res) {
     res.render('userdata', req.account);
+    up.moves.get({}, function(err, body) {
+    if (err) {
+      console.log('Error receiving Jawbone UP data');
+    } else {
+      var jawboneData = JSON.parse(body).data;
+      console.log(jawboneData);
+      for (var i = 0; i < jawboneData.items.length; i++) {
+        var date = jawboneData.items[i].date.toString(),
+            year = date.slice(0,4),
+            month = date.slice(4,6),
+            day = date.slice(6,8);
+
+        jawboneData.items[i].date = day + '/' + month + '/' + year;
+        jawboneData.items[i].title = jawboneData.items[i].title.replace('for ', '');
+      }
+
+      // return done(null, jawboneData, console.log('Jawbone UP data ready to be displayed.'));
+      console.log("here");
+      console.log(jawboneData);
+
+    }
+  });
   }
 );
 //server
