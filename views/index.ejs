@@ -241,8 +241,8 @@
                             </div>
                             <a href="#">
                                 <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <span id="stepsChart" class="pull-left">View Details</span>
+                                    <span class="pull-right" id="stepsChart"><i id="stepsChart" class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
                                 </div>
                             </a>
@@ -439,7 +439,7 @@
                 </div>
                 <!-- /.row -->
 
-                <!-- <div class="row">
+                <div class="row chart" id="stepChart">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -450,8 +450,25 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
                 <!-- /.row -->
+
+                <!-- This is about Step chart -->
+                <script type="text/javascript">
+                    $(function(){
+                        $("#stepsChart").click(function(){
+                            $("#stepChart").toggle();
+                        });
+                    });
+                    
+                    // this is about sleep chart 
+                    // $(function(){
+                    //     $("#mychart").click(function(){
+                    //         $("#mychart").toggle();
+                    //     });
+                    // });
+                </script>
+
 
                 <div class="row">
                     <div class="col-lg-4">
