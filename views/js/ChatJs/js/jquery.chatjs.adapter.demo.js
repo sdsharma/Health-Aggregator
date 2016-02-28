@@ -6,6 +6,8 @@ var DemoAdapterConstants = (function () {
 
     DemoAdapterConstants.ECHOBOT_USER_ID = 2;
 
+    DemoAdapterConstants.GROUP_USER_ID = 3;
+
     DemoAdapterConstants.DEFAULT_ROOM_ID = 1;
 
     DemoAdapterConstants.ECHOBOT_TYPING_DELAY = 1000;
@@ -75,10 +77,20 @@ var DemoServerAdapter = (function () {
 
         echoBotUser.Status = 1 /* Online */;
 
+        var groupBotUser = new ChatUserInfo();
+        groupBotUser.Id = DemoAdapterConstants.GROUP_USER_ID;
+        groupBotUser.RoomId = DemoAdapterConstants.DEFAULT_ROOM_ID;
+        groupBotUser.Name = "Support Group";
+        groupBotUser.Email = "echobot1984@gmail.com";
+        groupBotUser.ProfilePictureUrl = "./js/ChatJs/Images/group.png";
+
+        groupBotUser.Status = 1 /* Online */;
+
         // adds the users in the global user list
         this.users = new Array();
         this.users.push(myUser);
         this.users.push(echoBotUser);
+        this.users.push(groupBotUser);
 
         // configuring rooms
         var defaultRoom = new ChatRoomInfo();

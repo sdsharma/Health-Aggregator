@@ -133,7 +133,7 @@ function getDateTime(offset) {
 }
 
 function getMealsToday(){
-  var url = "http://www.myfitnesspal.com/reports/printable_diary/superdudeb?from=" + getDateTime(0) + "&to=" + getDateTime(0);
+  var url = "http://www.myfitnesspal.com/reports/printable_diary/superdudeb?from=" + getDateTime(1) + "&to=" + getDateTime(1);
   var usersMealPath0 = path.join(__dirname, '/views/mealsdata0.json');
   var usersMealPath1 = path.join(__dirname, '/views/mealsdata1.json');
   var usersMealPath2 = path.join(__dirname, '/views/mealsdata2.json');
