@@ -176,7 +176,7 @@ function getMealsToday(){
       if(whichMeal != - 1 && food != "Breakfast" && food != "Lunch" && food != "Dinner" && food != "Snacks") {(parsedResultUpper[whichMeal]).push(metadata);}
 
     });
-    (parsedResultUpper[whichMeal]).length = (parsedResultUpper[whichMeal]).length - 5;
+    //(parsedResultUpper[whichMeal]).length = (parsedResultUpper[whichMeal]).length - 5;
     //parsedResults = parsedResults.slice(1,parsedResults.length-1);
     jsonfile.writeFile(usersMealPath0, parsedResultUpper[0], function (err) {
       if(err){
