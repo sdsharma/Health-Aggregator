@@ -457,7 +457,7 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Area Chart</h3>
+                                <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Overall Chart</h3>
                             </div>
                             <div class="panel-body">
                                 <div id="morris-area-chart"></div>
@@ -467,21 +467,123 @@
                 </div>
                 <!-- /.row -->
 
-                <!-- This is about Step chart -->
+               <!-- This is about Step chart -->
                 <script type="text/javascript">
-                    $(function(){
-                        $("#stepsChart").click(function(){
-                            $("#stepChart").toggle();
-                        });
+                    // Area Chart
+                $(function() {
+                    Morris.Area({
+                        element: 'morris-area-chart',
+                        data: [{
+                            period: '2016-02-18',
+                            sleep: 6,
+                            steps: 6000,
+                            weight: 148,
+                            caloriesburned: 500,
+                            caloriesconsumed: 800,
+                            averagheartrate: 74,
+                            inactivetime: 8.36,
+                            activetime: 1.89
+                        }, {
+                            period: '2016-02-19',
+                            sleep: 7,
+                            steps: 8000,
+                            weight: 150,
+                            caloriesburned: 700,
+                            caloriesconsumed: 800,
+                            averagheartrate: 70,
+                            inactivetime: 9.36,
+                            activetime: 1.23
+                        }, {
+                            period: '2016-02-20',
+                            sleep: 7.5,
+                            steps: 12000,
+                            weight: 152,
+                            caloriesburned: 1000,
+                            caloriesconsumed: 800,
+                            averagheartrate: 72,
+                            inactivetime: 10.36,
+                            activetime: 1.23
+                        }, {
+                            period: '2016-02-21',
+                            sleep: 7,
+                            steps: 13000,
+                            weight: 148,
+                            caloriesburned: 700,
+                            caloriesconsumed: 800,
+                            averagheartrate: 70,
+                            inactivetime: 4.36,
+                            activetime: 2.8
+                        }, {
+                            period: '2016-02-22',
+                            sleep: 8.5,
+                            steps: 18000,
+                            weight: 148,
+                            caloriesburned: 500,
+                            caloriesconsumed: 800,
+                            averagheartrate: 72,
+                            inactivetime: 15.36,
+                            activetime: 2.4
+                        }, {
+                            period: '2016-02-23',
+                            sleep: 9,
+                            steps: 12000,
+                            weight: 149,
+                            caloriesburned: 280,
+                            caloriesconsumed: 800,
+                            averagheartrate: 70,
+                            inactivetime: 13.36,
+                            activetime: 1.9
+                        }, {
+                            period: '2016-02-24',
+                            sleep: 8.5,
+                            steps: 64000,
+                            weight: 150,
+                            caloriesburned: 600,
+                            caloriesconsumed: 800,
+                            averagheartrate: 72,
+                            inactivetime: 19.36,
+                            activetime: 2.5
+                        }, {
+                            period: '2016-02-25',
+                            sleep: 9,
+                            steps: 7000,
+                            weight: 148,
+                            caloriesburned: 870,
+                            caloriesconsumed: 800,
+                            averagheartrate: 70,
+                            inactivetime: 14,
+                            activetime: 1.7
+                        }, {
+                            period: '2016-02-26',
+                            sleep: 7,
+                            steps: 14000,
+                            weight: 148,
+                            caloriesburned: 300,
+                            caloriesconsumed: 800,
+                            averagheartrate: 70,
+                            inactivetime: 18,
+                            activetime: 2.23
+                        }, {
+                            period: '2016-02-27',
+                            sleep: 6.5,
+                            steps: 9290,
+                            weight: 148,
+                            caloriesburned: 465,
+                            caloriesconsumed: 763,
+                            averagheartrate: 74,
+                            inactivetime: 18.36,
+                            activetime: 1.23
+                        }],
+                        xkey: 'period',
+                        ykeys: ['sleep','steps','weight','caloriesburned','averagheartrate','inactivetime','activetime'],
+                        labels: ['sleep', 'steps', 'weight','caloriesburned','averagheartrate','inactivetime','activetime'],
+                        pointSize: 2,
+                        hideHover: 'auto',
+                        resize: true
                     });
-                    
-                    // this is about sleep chart 
-                    // $(function(){
-                    //     $("#mychart").click(function(){
-                    //         $("#mychart").toggle();
-                    //     });
-                    // });
+                });
                 </script>
+
 
 
                 <div class="row">
@@ -673,7 +775,7 @@
     <!-- Morris Charts JavaScript -->
     <script src="js/plugins/morris/raphael.min.js"></script>
     <script src="js/plugins/morris/morris.min.js"></script>
-    <script src="js/plugins/morris/morris-data.js"></script>
+    
 </body>
 
 </html>
