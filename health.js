@@ -67,8 +67,35 @@ var usersFilePath = path.join(__dirname, '/views/macrosdata.json');
       var diff = now - start;
       var oneDay = 1000 * 60 * 60 * 24;
       var days = Math.floor(diff / oneDay);
+      var stepsPoints = (jwdata[days-8].m_steps * 50)/10000;
+      var weightPoints = (Math.ceil(jwdata[days-9].weight * 2.2) - Math.ceil(jwdata[days-8].weight * 2.2)) * 50;
+      if( weightPoints < 0 )
+      {
+          weightPoints = 0;
+      }
+      var caloriesBurnedPoints = jwdata[days-8].m_calories * 0.1;
+      var inactivePoints = 0;
+      if( (jwdata[days-8].m_inactive_time/3600).toFixed(2) < 8)
+      {
+          inactivePoints = 50;
+      }
+      var sleepPoints = 0;
+      if( (jwdata[days-8].s_duration/3600).toFixed(2) > 7 && (jwdata[days-8].s_duration/3600).toFixed(2) < 11.1)
+      {
+          sleepPoints = 50;
+      }
+      var caloriesPoints = (data.data[data.data.length - 2].calories - data.data[data.data.length - 1].calories) * 0.25;
+      if( caloriesPoints < 0 )
+      {
+          caloriesPoints = 0;
+      }
+      var activePoints =  (jwdata[days-8].m_active_time/3600).toFixed(2)*25;
       // console.log(jwdata[day-7]);
-      res.render('index.ejs', {caloriestoday: data.data[data.data.length - 1].calories, stepstoday: jwdata[days-8].m_steps, sleeptoday: (jwdata[days-8].s_duration/3600).toFixed(2), weighttoday: Math.ceil(jwdata[days-8].weight * 2.2), caloriesburned: jwdata[days-8].m_calories, ahr: jwdata[days-8].avg_bg, iat: (jwdata[days-8].m_inactive_time/3600).toFixed(2), aat: (jwdata[days-8].m_active_time/3600).toFixed(2)});
+      res.render('index.ejs', {stepPoint: stepsPoints, weightPoint: weightPoints, caloriesBurnedPoint: caloriesBurnedPoints, 
+          inactivePoint: inactivePoints, sleepPoint: sleepPoints, caloriesPoint: caloriesPoints, activePoint:activePoints, caloriestoday: data.data[data.data.length - 1].calories, stepstoday: jwdata[days-8].m_steps, 
+          sleeptoday: (jwdata[days-8].s_duration/3600).toFixed(2), weighttoday: Math.ceil(jwdata[days-8].weight * 2.2), 
+          caloriesburned: jwdata[days-8].m_calories, ahr: jwdata[days-8].avg_bg, iat: (jwdata[days-8].m_inactive_time/3600).toFixed(2), 
+          aat: (jwdata[days-8].m_active_time/3600).toFixed(2)});
     });
  });
  
