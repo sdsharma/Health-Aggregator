@@ -19,7 +19,7 @@ var app = express();
   clientSecret: '6bc750b8b39d83d6f16adcb637630be0e3df9a08',
   authorizationURL: 'https://jawbone.com/auth/oauth2/auth',
   tokenURL: 'https://jawbone.com/auth/oauth2/token',
-  callbackURL: 'https://localhost:3000/login/jawbone/callback'
+  callbackURL: 'https://singularityhealth.herokuapp.com/login/jawbone/callback'
 };
 var demoSession = {
     accessToken: '',
