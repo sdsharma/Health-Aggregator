@@ -1,0 +1,36 @@
+{
+  "name": "singularity",
+  "version": "1.0.0",
+  "description": "health aggragator",
+  "main": "health.js",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "cheerio": "^0.20.0",
+    "ejs": "^2.4.2",
+    "html": "^0.0.10",
+    "passport": "^0.3.2",
+    "jsonfile": "^2.3.1",
+    "mfp": "^0.5.6",
+    "request": "^2.72.0",
+    "passport-oauth": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sdsharma/Health-Aggregator.git"
+  },
+  "keywords": [
+    "health",
+    "aggregator"
+  ],
+  "author": "Shivam Sharma, Daniel Kim, Joseph Thomas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sdsharma/Health-Aggregator/issues"
+  },
+  "homepage": "https://github.com/sdsharma/Health-Aggregator"
+}
